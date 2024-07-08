@@ -5,5 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-
+    @Bean(name="speakerService")
+    public SpeakerService getSpeakerService() {
+        return new SpeakerServiceImpl();
+    }
 }
