@@ -2,6 +2,7 @@ package com.pluralsight.service;
 
 import com.pluralsight.model.Speaker;
 import com.pluralsight.repository.SpeakerRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -22,6 +23,11 @@ public class SpeakerServiceImpl implements SpeakerService {
     public SpeakerServiceImpl(SpeakerRepository repository) {
         System.out.println("SpeakerServiceImpl repository constructor");
         this.repository = repository;
+    }
+
+    @PostConstruct
+    private void initialize() {
+        System.out.println("We're called after the constructors");
     }
 
     @Override
