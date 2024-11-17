@@ -2,6 +2,7 @@ package com.pluralsight.repository;
 
 import com.pluralsight.model.Speaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import java.util.List;
 public class StubSpeakerRepositoryImpl implements SpeakerRepository {
 
     private Calendar cal;
+
+    @Value("#{ T(java.lang.Math).random() * 100 }")
+    private double seedNum;
 
     @Autowired
     public void setCal(Calendar cal) {
@@ -26,6 +30,7 @@ public class StubSpeakerRepositoryImpl implements SpeakerRepository {
 
         speaker.setFirstName("Big");
         speaker.setLastName("Bird");
+        speaker.setSeedNum(seedNum);
 
         System.out.println("cal: " + cal.getTime());
 
